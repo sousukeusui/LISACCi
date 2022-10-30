@@ -1,0 +1,2 @@
+class TentativeUser < ApplicationRecord
+end
