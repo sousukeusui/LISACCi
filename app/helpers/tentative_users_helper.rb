@@ -1,0 +1,2 @@
+module TentativeUsersHelper
+end
