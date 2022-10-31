@@ -1,6 +1,6 @@
 <h1>Users#new</h1>
 <p>ご指定のメールアドレスに本登録用URLをお送り致します。</p>
-<%= form_with model:@tentative_user, url: tentative_users_new_path, local:true do |f| %>
+<%= form_with model:@tentative_user, url: tentative_users_create_path, local:true do |f| %>
     <div class="form-group">
         <%= f.label :mail,"メールアドレス" %>
         <%= f.text_field :mail %>
