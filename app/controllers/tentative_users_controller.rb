@@ -5,7 +5,7 @@ class TentativeUsersController < ApplicationController
 
     def create
         @tentative_user = TentativeUser.find_or_initialize_by(tentative_user)
-        @tentative_user.token = SecureRandom.base64
+        @tentative_user.token = create_token
         @tentative_user.expired_at = DateTime.now
 
         if @tentative_user.save
@@ -21,6 +21,17 @@ class TentativeUsersController < ApplicationController
 
 
     private
+
+    def create_token
+        token = nil
+        loop do
+            token = SecureRandom.base64
+            if TentativeUser.find_by(token: token).nil?
+                break
+            end
+        end
+        return token
+    end
     
     def tentative_user
         params.require(:tentative_user).permit(:mail)
