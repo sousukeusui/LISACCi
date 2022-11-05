@@ -72,7 +72,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   #letter_opener_webの設定
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :letter_opener_web
   config.action_mailer.perform_deliveries = false
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
