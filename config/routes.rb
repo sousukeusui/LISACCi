@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
   get 'tentative_users/new'
   post 'tentative_users/create'
   get 'tentative_users/after_new'
