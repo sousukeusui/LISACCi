@@ -21,7 +21,7 @@ class TentativeUsersController < ApplicationController
     end
 
     def after_new
-
+        
     end
 
 
