@@ -73,7 +73,7 @@ Rails.application.configure do
 
   #letter_opener_webの設定
   config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.perform_deliveries = false
+  #config.action_mailer.perform_deliveries = false
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Uncomment if you wish to allow Action Cable access from any origin.

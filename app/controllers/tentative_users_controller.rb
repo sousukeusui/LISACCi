@@ -13,7 +13,7 @@ class TentativeUsersController < ApplicationController
 
         if @tentative_user.save
             #メールを送る処理を書く
-            UserMailer.with(tentative_user: @tentative_user).registration_mail.deliver_later
+            UserMailer.registration_mail(@tentative_user).deliver_later
             redirect_to tentative_users_after_new_path, notice: 'メールが送信されました'
         else
             render :new
@@ -21,7 +21,7 @@ class TentativeUsersController < ApplicationController
     end
 
     def after_new
-        
+
     end
 
 
