@@ -9,7 +9,7 @@ class TentativeUsersController < ApplicationController
         #トークン生成
         @tentative_user.token = create_token
         #現在時刻の登録
-        @tentative_user.expired_at = DateTime.now
+        @tentative_user.expired_at = Time.zone.now + 1.days
 
         if @tentative_user.save
             #メールを送る処理を書く
