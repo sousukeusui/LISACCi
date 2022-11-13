@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'tentative_users/after_new'
   get 'users/new'
   get 'users/new/:token', to: 'users#new'
+  post 'users/create', to: 'users#create'
   get '/', to: 'top#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

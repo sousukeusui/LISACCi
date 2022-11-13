@@ -8,4 +8,9 @@ class UsersController < ApplicationController
       render action: :token_error
     end
   end
+
+  def create
+      #本登録情報が正しいかどうか調べる
+      #acount_idは自動生成
+  end
 end

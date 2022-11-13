@@ -1,1 +1,16 @@
 <h1>新規登録</h1>
+
+<%= form_with model:@user, url: users_create_path, local: true do |f| %>
+    <div class="form_group">
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name %>
+    </div>
+    <div class="form_group">
+        <%= f.label :password "パスワード" %>
+        <%= f.pasword_field :passwrod  %>
+    </div>
+    <div class="form_group">
+        <%= f.password_field :password_confirmation "パスワード（確認用）" %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+<%end%>
