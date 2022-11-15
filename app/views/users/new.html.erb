@@ -6,11 +6,18 @@
         <%= f.text_field :name %>
     </div>
     <div class="form_group">
-        <%= f.label :password "パスワード" %>
-        <%= f.pasword_field :passwrod  %>
+        <%= f.label :mail,"メールアドレス" %>
+        <%= f.text_field :mail %>
     </div>
     <div class="form_group">
-        <%= f.password_field :password_confirmation "パスワード（確認用）" %>
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password  %>
+    </div>
+    <div class="form_group">
+        <%= f.label :password_confirmation, "パスワード（確認用）" %>
         <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="form_group">
+        <%= f.submit "新規登録" %>
     </div>
 <%end%>
