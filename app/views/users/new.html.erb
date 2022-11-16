@@ -7,7 +7,7 @@
     </div>
     <div class="form_group">
         <%= f.label :mail,"メールアドレス" %>
-        <%= f.text_field :mail %>
+        <%= f.text_field :mail, readonly: true, value: "#{@tentative_user.mail}"%>
     </div>
     <div class="form_group">
         <%= f.label :password, "パスワード" %>
