@@ -23,6 +23,8 @@ class UsersController < ApplicationController
     #userを保存に成功時、現場一覧に遷移
     if @user.save
       redirect_to tentative_users_after_new_path
+    else
+      render :new
     end
   end
 
