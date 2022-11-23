@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to tentative_users_after_new_path
     else
-      render :new
+      redirect_to "/users/new/#{params[:user][:token]}"
     end
   end
 
