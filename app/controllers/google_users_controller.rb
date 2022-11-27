@@ -1,8 +1,8 @@
 class GoogleUsersController < ApplicationController
     require 'googleauth/id_tokens/verifier'
 
-    before_action :verify_g_csrf_token
     protect_from_forgery except: :registration
+    before_action :verify_g_csrf_token
 
     def registration
         payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: ENV['GOOGLE_CLIENT_ID'])

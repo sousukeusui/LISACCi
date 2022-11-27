@@ -1,3 +1,3 @@
 class GoogleUser < ApplicationRecord
-    valildates :mail, presence: true, uniquness: true
+    validates :mail, presence: true, uniqueness: true
 end
