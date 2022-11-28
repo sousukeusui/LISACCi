@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get 'users/new/:token', to: 'users#new'
   post 'users/create', to: 'users#create'
   get '/', to: 'top#index'
-  post 'google_login_api/callback', to: 'google_users#create'
+  post 'google_login_api/callback', to: 'google_users#login'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
