@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   def new
-    #仮登録時のトークンが正しいかどうか、有効期限が切れてないか調べる
+    
     @tentative_user = TentativeUser.find_by(token: params[:token])
-    if @tentative_user.present? && @tentative_user.expired_at > Time.zone.now
+    #期待したデータを持っているかどうか
+    if @tentative_user.has_registration_data
       @user = User.new
     else
       render action: :token_error
@@ -11,11 +12,11 @@ class UsersController < ApplicationController
 
   def create
     #account_idのパラメーターがあるなら入力されたacount_id、ないなら自動生成
-    if params[:user][:account_id].present?
+    if params[:user][:account_id].blank?
       @user = User.new(user_params)
-    else
-      @user = User.new(user_params_account_id_nil)
       @user.account_id = SecureRandom.alphanumeric(8)
+    else
+      @user = User.new(user_params)
     end
     #デフォルトのイメージ保存
     @user.image = "image"
@@ -32,9 +33,5 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :mail, :password, :password_confirmation, :account_id)
-  end
-
-  def user_params_account_id_nil
-    params.require(:user).permit(:name, :mail, :password, :password_confirmation)
   end
 end
