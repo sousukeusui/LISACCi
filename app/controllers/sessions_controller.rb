@@ -13,6 +13,11 @@ class SessionsController < ApplicationController
 			end
 		end
 
+		def destroy
+			reset_session
+			redirect_to tentative_users_new_path, notice: 'ログアウトしました'
+		end
+
 		private 
 		def sessions_params
 			params.require(:user).permit(:mail, :password, :password_confirmation)

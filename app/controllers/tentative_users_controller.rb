@@ -12,7 +12,7 @@ class TentativeUsersController < ApplicationController
         if @tentative_user.save
             #メールを送る処理を書く
             UserMailer.registration_mail(@tentative_user).deliver_later
-            redirect_to tentative_users_after_new_path, notice: 'メールが送信されました' #工事一覧画面に遷移させるため後ほどpath変える
+            redirect_to tentative_users_after_new_path, notice: 'メールが送信されました'
         else
             render :new
         end
