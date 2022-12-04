@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/new/:token', to: 'users#new'
   post 'users/create', to: 'users#create'
-  get '/', to: 'top#index'
+  root 'top#index'
   post 'google_login_api/callback', to: 'google_users#login'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
