@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   get 'tentative_users/new'
   post 'tentative_users/create'
-  get 'tentative_users/after_new'
+  get 'tentative_users/after_new/:id', to: 'tentative_users#after_new'
   get 'users/new'
   get 'users/new/:token', to: 'users#new'
   post 'users/create', to: 'users#create'

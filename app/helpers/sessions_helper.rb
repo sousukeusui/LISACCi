@@ -3,6 +3,8 @@ module SessionsHelper
 	def current_user
 		if session[:user_id]
 			@current_user ||= User.find_by(id: session[:user_id])
+		elsif session[:google_id]
+			@current_user ||= GoogleUser.find_by(id: session[:google_id])
 		end
 	end
 
