@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sites/new'
   #letter_opener_webのルーティング
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
