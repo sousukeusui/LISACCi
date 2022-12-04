@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def new
-    
     @tentative_user = TentativeUser.find_by(token: params[:token])
     #期待したデータを持っているかどうか
     if @tentative_user.has_registration_data
@@ -23,7 +22,8 @@ class UsersController < ApplicationController
 
     #userを保存に成功時、現場一覧に遷移
     if @user.save
-      redirect_to tentative_users_after_new_path
+      session[:user_id] = @user.id
+      redirect_to tentative_users_after_new_path, notice: 'ユーザーを作成しました' #工事一覧画面に遷移させるため後ほどpath変える
     else
       redirect_to "/users/new/#{params[:user][:token]}"
     end
