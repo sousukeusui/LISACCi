@@ -4,16 +4,18 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+  root 'top#index'
   get 'tentative_users/new'
   post 'tentative_users/create'
   get 'tentative_users/after_new/:id', to: 'tentative_users#after_new'
   get 'users/new'
   get 'users/new/:token', to: 'users#new'
   post 'users/create', to: 'users#create'
-  root 'top#index'
   post 'google_login_api/callback', to: 'google_users#login'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  get 'sites/new'
+  post 'sites/create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
