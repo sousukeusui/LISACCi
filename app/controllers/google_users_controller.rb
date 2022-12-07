@@ -8,7 +8,7 @@ class GoogleUsersController < ApplicationController
         payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: ENV['GOOGLE_CLIENT_ID'])
         google_user = GoogleUser.find_or_create_by(mail: payload['email'])
         session[:google_id] = google_user.id
-        redirect_to tentative_users_after_new_path, notice: 'ログインしました'
+        redirect_to sites_new_path, notice: 'ログインしました'
     end
 
     private

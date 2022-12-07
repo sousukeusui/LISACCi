@@ -5,7 +5,7 @@ class TentativeUsersController < ApplicationController
 
 	def create
 		#仮ユーザー作る
-		@tentative_user = TentativeUser.new(tentative_user)
+		@tentative_user = TentativeUser.new(tentative_user_params)
 		#期限時間の登録
 		@tentative_user.expired_at = Time.zone.now + 1.days
 
@@ -25,7 +25,7 @@ class TentativeUsersController < ApplicationController
 
 	private
 	
-	def tentative_user
+	def tentative_user_params
 		params.require(:tentative_user).permit(:mail)
 	end
 end

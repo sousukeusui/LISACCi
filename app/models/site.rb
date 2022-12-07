@@ -5,5 +5,5 @@ class Site < ApplicationRecord
   validates :content, presence: true
   validates :construction_date, presence: true
   validates :progress, presence: true
-  validates :check, presence: true
+  validates :check, inclusion: {in: [true,false]}
 end
