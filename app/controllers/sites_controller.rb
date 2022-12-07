@@ -5,9 +5,8 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
-    @site.progress = '未完了'
 
-    if @site.save!
+    if @site.save
       redirect_to sites_index_path, notice: '現場を保存しました'
     else
       render action: :new
