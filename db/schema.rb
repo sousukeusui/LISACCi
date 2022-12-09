@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_07_140559) do
+ActiveRecord::Schema.define(version: 2022_12_09_124551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 2022_12_07_140559) do
     t.index ["token"], name: "index_tentative_users_on_token", unique: true
   end
 
+  create_table "user_sites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "site_id", null: false
+    t.integer "role", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_id"], name: "index_user_sites_on_site_id"
+    t.index ["user_id"], name: "index_user_sites_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", limit: 16, null: false
     t.string "mail", null: false
@@ -58,4 +68,6 @@ ActiveRecord::Schema.define(version: 2022_12_07_140559) do
     t.index ["mail"], name: "index_users_on_mail", unique: true
   end
 
+  add_foreign_key "user_sites", "sites"
+  add_foreign_key "user_sites", "users"
 end
