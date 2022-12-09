@@ -1,4 +1,7 @@
 class Site < ApplicationRecord
+  has_many :user_sites
+  has_many :users, through: :user_sites
+
   validates :customer, presence: true
   validates :name, presence: true
   validates :address, presence: true
