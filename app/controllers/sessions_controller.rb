@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		user = User.find_by(mail: session_params[:mail])
 		if user && user.authenticate(session_params[:password])
 			session[:user_id] = user.id
-			redirect_to tentative_users_after_new_path, notice: 'ログインしました'#工事一覧画面に遷移させるため後ほどpath変える
+			redirect_to sites_index_path, notice: 'ログインしました'#工事一覧画面に遷移させるため後ほどpath変える
 		else
 			render action: :new
 		end

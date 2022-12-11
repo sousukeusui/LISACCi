@@ -4,9 +4,12 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = Site.new(site_params)
+    #現場情報のインスタンス作成
+    site = Site.new(site_params)
+    #user_sites中間テーブルにそれぞれ値を保存
+    user_site = site.user_sites.new(user_id: current_user.id, site_id: site.id, role: 0)
 
-    if @site.save
+    if site.save && user_site.save
       redirect_to sites_index_path, notice: '現場を保存しました'
     else
       render action: :new
