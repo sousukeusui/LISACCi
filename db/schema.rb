@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_27_063550) do
+ActiveRecord::Schema.define(version: 2022_12_09_124551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2022_11_27_063550) do
     t.index ["mail"], name: "index_google_users_on_mail", unique: true
   end
 
+  create_table "sites", force: :cascade do |t|
+    t.string "customer", null: false
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "content", null: false
+    t.date "construction_date", null: false
+    t.boolean "check", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "progress", default: 0, null: false
+  end
+
   create_table "tentative_users", force: :cascade do |t|
     t.string "mail", null: false
     t.string "token", limit: 64, null: false
@@ -30,6 +42,16 @@ ActiveRecord::Schema.define(version: 2022_11_27_063550) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["mail"], name: "index_tentative_users_on_mail", unique: true
     t.index ["token"], name: "index_tentative_users_on_token", unique: true
+  end
+
+  create_table "user_sites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "site_id", null: false
+    t.integer "role", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["site_id"], name: "index_user_sites_on_site_id"
+    t.index ["user_id"], name: "index_user_sites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +68,6 @@ ActiveRecord::Schema.define(version: 2022_11_27_063550) do
     t.index ["mail"], name: "index_users_on_mail", unique: true
   end
 
+  add_foreign_key "user_sites", "sites"
+  add_foreign_key "user_sites", "users"
 end

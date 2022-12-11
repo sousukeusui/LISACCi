@@ -1,0 +1,31 @@
+<p>ログイン</p>
+<%= form_with scope: :session, url: login_path, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :mail, "メールアドレス" %>
+    <%= f.text_field :mail %>
+  <div class="form-group">
+    <%= f.label :password, "パズワード" %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "ログイン" %>
+  </div>
+<% end %>
+
+<div class="google_button">
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+  <div id="g_id_onload"
+      data-client_id=<%= ENV['GOOGLE_CLIENT_ID'] %>
+      data-login_uri="http://localhost:3000/google_login_api/callback"
+      data-auto_prompt="false">
+  </div>
+  <div class="g_id_signin"
+      data-type="standard"
+      data-size="large"
+      data-theme="outline"
+      data-text="sign_in_with"
+      data-shape="rectangular"
+      data-logo_alignment="left">
+  </div>
+</div>

@@ -1,1 +1,7 @@
+<p><%= @tentative_user.mail %>宛にメールを送信しました。</p>
+<p>メールに記載されているURLから本登録を完了させてください。</p>
+
+
 <p>成功</p>
+<%= link_to 'ログアウト', logout_path, method: :delete %>
+<p><%= logged_in %></p>

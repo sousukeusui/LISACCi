@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
+  get 'sites/new'
   #letter_opener_webのルーティング
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+  root 'top#index'
   get 'tentative_users/new'
   post 'tentative_users/create'
-  get 'tentative_users/after_new'
+  get 'tentative_users/after_new/:id', to: 'tentative_users#after_new'
   get 'users/new'
   get 'users/new/:token', to: 'users#new'
   post 'users/create', to: 'users#create'
-  get '/', to: 'top#index'
   post 'google_login_api/callback', to: 'google_users#login'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  get 'sites/new'
+  post 'sites/create'
+  get 'sites/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
