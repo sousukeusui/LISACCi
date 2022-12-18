@@ -1,31 +1,31 @@
 <h1>新規登録</h1>
 
 <%= form_with model:@user, url: users_create_path, local: true do |f| %>
-	<div class="form_group">
-		<%= f.label :name, "名前" %>
-		<%= f.text_field :name %>
-	</div>
-	<div class="form_group">
-		<%= f.label :mail,"メールアドレス" %>
-		<%= f.text_field :mail, readonly: true, value: "#{@tentative_user.mail}"%>
-	</div>
-	<div class="form_group">
-		<%= f.label :password, "パスワード" %>
-		<%= f.password_field :password  %>
-	</div>
-	<div class="form_group">
-		<%= f.label :password_confirmation, "パスワード（確認用）" %>
-		<%= f.password_field :password_confirmation %>
-	</div>
-	<div class="form_group">
-		<%= f.label :account_id, "アカウントID" %>
-		<%= f.text_field :account_id %>
-		<p>アカウントID:設定しない場合は自動的に作られる。後で変更可能。</p>
-	</div>
-	<div class="form_group">
-		<%= f.hidden_field :token, :value => @tentative_user.token %>
-	</div>
-	<div class="form_group"> 
-		<%= f.submit "新規登録" %>
-	</div>
+<div class="form_group">
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name %>
+</div>
+<div class="form_group">
+  <%= f.label :mail,"メールアドレス" %>
+  <%= f.text_field :mail, readonly: true, value: "#{@tentative_user.mail}"%>
+</div>
+<div class="form_group">
+  <%= f.label :password, "パスワード" %>
+  <%= f.password_field :password  %>
+</div>
+<div class="form_group">
+  <%= f.label :password_confirmation, "パスワード（確認用）" %>
+  <%= f.password_field :password_confirmation %>
+</div>
+<div class="form_group">
+  <%= f.label :account_id, "アカウントID" %>
+  <%= f.text_field :account_id %>
+  <p>アカウントID:設定しない場合は自動的に作られる。後で変更可能。</p>
+</div>
+<div class="form_group">
+  <%= f.hidden_field :token, :value => @tentative_user.token %>
+</div>
+<div class="form_group">
+  <%= f.submit "新規登録" %>
+</div>
 <%end%>

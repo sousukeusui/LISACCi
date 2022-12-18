@@ -59,3 +59,4 @@ gem 'net-smtp'
 gem 'dotenv-rails'
 gem 'googleauth'
 gem 'pry-rails'
+gem 'rubocop', require: false
